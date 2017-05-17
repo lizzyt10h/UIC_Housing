@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <title>UIC Housing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+            <h2 class="text-center" style="color:#337AB7;font-family:Arial Black">UIC Housing</h2>
+            <p>Looking for the best place to live in Chicago? Here you'll find a set of tools that will help you make an informed decision about your soon to be home.</p>
+            <hr id="line1">
+            <ul class="nav nav-pills nav-stacked">
+                <li id="housesButton" title="Show the avaliable houses near UIC"><a>Houses</a></li>
+                <li id="climateButton" title="Get a comparative diagram of your local weather vs Chicago"><a>Weather</a></li>
+            </ul>
+            <hr id="line1">
+            <div id="H" style="display:none">
+                <label>Search houses near UIC:</label>
+                <label><input type="number" class="form-control" placeholder="miles from UIC" onkeydown="cmiles(this.value)" id="cmilesid"></label>
+                <p>Now you can see in the map all the houses avaliable for rent near UIC. You can click on the blue icons and find more information about each house.</p>
+                <p>To help you decide whether a zone suits you, check out these features:</p>
+                <form>                   
+                        
+                    <div class="checkbox">                   
+                        <label><input type="checkbox" value="" onchange="chicagoParks()" id="parks">Parks</label>       
+                        <label><input type="number" class="form-control" placeholder="miles from UIC" onkeydown="pmiles(this.value)" id="pmilesid" disabled></label>
+
+                    </div>                    
+
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="" onchange="chicagoBikeR()" id="bikeR">Bike racks</label>
+                        <label><input type="number" class="form-control" placeholder="miles from UIC" onkeydown="bmiles(this.value)" id="bmilesid" disabled></label>
+                    </div>
+
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="" onchange="chicagoPolice()" id="police">Police Sta.</label>
+                        <label><input type="number" class="form-control" placeholder="miles from UIC" onkeydown="polmiles(this.value)" id="polmilesid" disabled></label>
+                    </div>
+                </form>
+            </div>
+            <div id="C" style="display:none">
+                <p>This tool lets you explore Chicago's weather so now you can prepare for it in advance!</p>
+                
+                <div class="input-group">                    
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal">
+                        <span>Show Charts</span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <br>
+            
+        </div>
+
+        <div class="col-sm-9">
+
+            <hr>
+            <div id="map"></div>
+            <br>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Weather in Chicago</h4>
+          </div>
+          <div class="modal-body">
+            <!--<div id="chart"></div>-->
+            <div role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#temperatureTab" aria-controls="temperatureTab" role="tab" data-toggle="tab">Temperature</a>
+
+                    </li>
+                    <li role="presentation"><a href="#prcpTab" aria-controls="prcpTab" role="tab" data-toggle="tab">Precipitation</a>
+
+                    </li>
+                    <li role="presentation"><a href="#snowTab" aria-controls="snowTab" role="tab" data-toggle="tab">Snow</a>
+
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <br>
+                    <div role="tabpanel" class="tab-pane active" id="temperatureTab">
+                        <label>Chicago's extreme temperature for 2016 (°F)</label>
+                        <br>
+                        <br>
+                        <div id="tempChart"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="prcpTab">
+                        <label>Chicago's precipitation for 2016 (in)</label>
+                        <br>
+                        <br>
+                        <div id="prcpChart"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="snowTab">
+                        <label>Chicago's snowfall for 2016 (in)</label>
+                        <br>
+                        <br>
+                        <div id="snowChart"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <footer class="container-fluid">
+        <div>
+            <span style="color:#F39C26"><p style="float:left;background-color:#4a4343"><font size="6">Purdue – UNAL Gold IronHacks 2017</p></span>
+            <span><a href="https://www.zillow.com/" style="float:right"><img src="http://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/logos/Zillowlogo_200x50.gif" width="200" height="50" alt="Zillow Real Estate Search" /></a></span>
+        </div>
+    </footer>
+    
+</div>   
+
+
+</body>
+    
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc9A62-Uv1jmMKWNxTta0TrHFiOnIE9xo">
+</script>
+    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+<link rel="stylesheet" href="css/index.css">
+<!--<script type="text/javascript" src="js/jsInitMap.js"></script>-->
+<script type="text/javascript" src="js/Marcador.js"></script>
+<script type="text/javascript" src="js/Mapa.js"></script>
+<script type="text/javascript" src="js/PaqueteDatosA.js"></script>
+<script type="text/javascript" src="js/Grafica.js"></script>
+<script type="text/javascript" src="js/Mushup.js"></script>
+    
+</html>
