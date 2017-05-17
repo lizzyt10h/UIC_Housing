@@ -44,8 +44,8 @@ $(document).ready(function(){
                     
                     //---------------ZILLOW----------------------
                     var zestimate = "";
-                    if(t>=0){//avoid Zillow limit
-                        t--;
+                    //if(t>=0){//avoid Zillow limit
+                        //t--;
                         zillow.url = "https://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1fqhic9egp7_376md&address="+streetAddress+"&citystatezip="+zipCode+"&rentzestimates=true";
                         zillow.headers = new Array();
 
@@ -64,7 +64,7 @@ $(document).ready(function(){
                             marker.initMarker();                 mapa.markersList["casasMList"].push(marker);
                             
                         });
-                    }
+                    //}
                     //-------------------------------------------
                 
                 });
