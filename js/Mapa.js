@@ -1,5 +1,5 @@
 class Mapa{
-    constructor(mape){
+    constructor(div, lat, long, image){
         this.div = div;
         this.lat = lat;
         this.long = long;
